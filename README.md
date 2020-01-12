@@ -40,11 +40,20 @@ Demonstrate your understanding of this week's concepts by answering the followin
 
 - [ ] Explain the difference between `Relational Databases` and `SQL`.
 
+relational databases stores data in tables consisting of columns. Each data entry is stored in a row. SQL is used to manage the tables, and data entry.
+
 - [ ] Why do tables need a `primary key`?
+
+tables need a primary key so that it could be considered normalized data. In addition to that, it used for data recall.
 
 - [ ] What is the name given to a table column that references the primary key on another table.
 
+foreign key
+
 - [ ] What do we need in order to have a _many to many_ relationship between two tables.
+
+we would need multiple tables that have normalized data. We also need to set up foregin keys that reference the tables. 
+
 
 ## Minimum Viable Product
 

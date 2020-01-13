@@ -8,10 +8,7 @@ const router = express.Router({
 
 router.get('/', async(req,res,next)=>{
     try{
-      const { id } = req.params
-      const task = await taskModel.getTask(id) 
-      task.map(task => task.completed===1 ? task.completed = true: task.completed = false)
-      res.json(task)
+        res.json( await taskModel.getTask())
     }
     catch(err){
       next(err)

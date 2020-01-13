@@ -1,7 +1,11 @@
 const db = require('../db-config.js')
 
-function getTask(project_id){
-    return db('task').where({project_id})
+function getTask(){
+    return db('project_tasks as pt')
+        .join('projects as p', 'p.id', 'pt.project_id')
+        .select('pt.project_id', 'p.name', 'p.description')
+        .join('task as t', 't.id', 'pt.task_id')
+        .select('t.description')
 
 }
 

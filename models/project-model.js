@@ -4,29 +4,27 @@ function find(){
     return db('projects')
 }
 
-function getTask(project_id){
-    return db('task').where({project_id})
-
-}
-
-function getResource(project_id){
-    return db('resources').where({project_id})
+function findById(id){
+    return db('projects').where({ id }).first()
 }
 
 function addProject(payload){
-    return db.insert('projects').insert(payload)
+    return db('projects').insert(payload)
+    
 }
 
-
-function addTask(payload){
-    return db.insert('task').insert(payload)
+function update(id, payload){
+    return db('projects').where({ id }).update(payload)
 }
 
+function deleteProject(id){
+    return db('projects').where({ id }).del()
+}
 
 module.exports ={
     find,
-    getTask,
-    getResource,
+    findById,
     addProject,
-    addTask
+    update,
+    deleteProject
 }

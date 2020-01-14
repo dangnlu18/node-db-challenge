@@ -8,7 +8,7 @@ const router = express.Router({
   mergeParams: true
 });
 
-router.use('/:id/tasks', taskRouter)
+// router.use('/:id/tasks', taskRouter)
 
 
 router.get('/', async(req,res,next)=>{
@@ -25,6 +25,18 @@ router.get('/', async(req,res,next)=>{
 router.get('/:id', async(req, res,next)=>{
   try{
     const project = await projects.findById(req.params.id)
+    project.map(project => project.completed ===1 ? project.completed = true: project.completed = false)
+    res.json(project)
+}
+catch(err){
+    next(err)
+  }
+})
+
+
+router.get('/:id/tasks', async(req, res,next)=>{
+  try{
+    const project = await projects.getProjectTasks(req.params.id)
     project.map(project => project.completed ===1 ? project.completed = true: project.completed = false)
     res.json(project)
 }

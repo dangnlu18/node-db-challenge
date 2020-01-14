@@ -5,12 +5,16 @@ function find(){
 }
 
 function findById(id){
-    return db('projects').where({ id }).first()
+    return db('projects').where({ id })
 }
 
 function addProject(payload){
     return db('projects').insert(payload)
     
+}
+
+function getProjectTasks(id){
+    return db('task').where('project_id', id)
 }
 
 function update(id, payload){
@@ -26,5 +30,6 @@ module.exports ={
     findById,
     addProject,
     update,
-    deleteProject
+    deleteProject,
+    getProjectTasks
 }

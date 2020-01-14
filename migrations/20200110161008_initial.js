@@ -6,8 +6,7 @@ exports.up = async function(knex) {
           .notNullable()
         table.string('description')
         table.boolean('completed')
-          .notNullable()
-          .defaultTo(false)
+          .defaultTo(0)
     })
   
     await knex.schema.createTable('resources', (table)=>{
@@ -24,8 +23,7 @@ exports.up = async function(knex) {
             .notNullable()
         table.string('notes')
         table.boolean('completed')
-            .defaultTo(false)
-            .notNullable()
+            .defaultTo(0)
         table.integer('project_id')
             .notNullable()
             .references('id')

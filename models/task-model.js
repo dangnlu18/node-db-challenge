@@ -10,13 +10,17 @@ function getTask(){
 }
 
 function addTask(payload){
-    return db.insert('task').insert(payload)
+    return db('task').insert(payload)
 }
 
+function getTaskById(id){
+    return db('task').where({id}).first()
+}
 
 module.exports ={
     getTask,
     addTask,
+    getTaskById,
 
 }
 
